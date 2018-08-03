@@ -1,0 +1,32 @@
+{
+	"name": "node-note",
+	"version": "0.0.1",
+	"description": "Notes app",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js"
+	},
+	"nodemonConfig": {
+		"ignore": [
+			"test/*",
+			"docs/*"
+		],
+		"delay": "2500"
+	},
+	"repository": {
+		"type": "git",
+		"url": "?.git"
+	},
+	"keywords": [
+		"notes"
+	],
+	"author": "Darko Tasevski",
+	"license": "MIT",
+	"dependencies": {
+		"lodash": "^4.17.10"
+	},
+	"devDependencies": {
+		"nodemon": "^1.18.3"
+	}
+}
