@@ -25,7 +25,7 @@ module.exports.addNote = (title, body) => {
 	}
 };
 
-module.exports.getAll = () => {};
+module.exports.getAll = () => fetchNotes();
 
 module.exports.getNote = title => {
 	const notes = fetchNotes();

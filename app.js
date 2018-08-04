@@ -5,7 +5,35 @@ const yargs = require('yargs');
 
 const notes = require('./notes');
 
-const argv = yargs.argv;
+const argv = yargs
+	.command('add', 'Add a new note', {
+		title: {
+			describe: 'Title of the note',
+			demand: true,
+			alias: 't',
+		},
+		body: {
+			describe: 'Note content',
+			demand: true,
+			alias: 'b',
+		},
+	})
+	.command('remove', 'Remove note', {
+		title: {
+			describe: 'Title of the note to be removed',
+			demand: true,
+			alias: 't',
+		},
+	})
+	.command('read', 'Read note', {
+		title: {
+			describe: 'Title of the desired note',
+			demand: true,
+			alias: 't',
+		},
+	})
+	.command('list', 'View all notes', {})
+	.help().argv;
 const command = argv._[0];
 
 if (command === 'add') {
@@ -31,7 +59,14 @@ if (command === 'add') {
 		console.log('There is no note with that title');
 	}
 } else if (command === 'list') {
-	notes.getAll();
+	const list = notes.getAll();
+	if (list.length) {
+		list.forEach(note => {
+			console.log(note);
+		});
+	} else {
+		console.log('You have no notes');
+	}
 } else {
 	console.log('No argument or not recognized');
 }
