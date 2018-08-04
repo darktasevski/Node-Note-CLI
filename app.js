@@ -5,13 +5,15 @@ const yargs = require('yargs');
 
 const notes = require('./notes');
 
+const titleOptions = {
+	describe: 'Title of the note',
+	demand: true,
+	alias: 't',
+};
+
 const argv = yargs
 	.command('add', 'Add a new note', {
-		title: {
-			describe: 'Title of the note',
-			demand: true,
-			alias: 't',
-		},
+		title: titleOptions,
 		body: {
 			describe: 'Note content',
 			demand: true,
@@ -19,18 +21,10 @@ const argv = yargs
 		},
 	})
 	.command('remove', 'Remove note', {
-		title: {
-			describe: 'Title of the note to be removed',
-			demand: true,
-			alias: 't',
-		},
+		title: titleOptions,
 	})
 	.command('read', 'Read note', {
-		title: {
-			describe: 'Title of the desired note',
-			demand: true,
-			alias: 't',
-		},
+		title: titleOptions,
 	})
 	.command('list', 'View all notes', {})
 	.help().argv;
